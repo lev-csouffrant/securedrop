@@ -339,6 +339,8 @@ default application.
 
 |Opened document|
 
+.. _working_with_documents:
+
 Working with Documents
 ----------------------
 
@@ -468,6 +470,8 @@ choose **Wipe** to delete them.
 |Wiping documents|
 
 .. _`guide to removing metadata`: https://freedom.press/training/everything-you-wanted-know-about-media-metadata-were-afraid-ask/
+
+.. _malware_risks:
 
 Risks From Malware
 ~~~~~~~~~~~~~~~~~~
