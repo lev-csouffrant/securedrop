@@ -33,7 +33,8 @@ passphrases:
    -  The network firewall username and password.
    -  The SSH private key and, if set, the key's passphrase.
    -  The GPG key that OSSEC will encrypt alerts to.
-   -  The admin's personal GPG key.
+   -  The admin's personal GPG public key, if you want to potentially encrypt
+      sensitive files to it for further analysis.
    -  The account details for the destination email address for OSSEC alerts.
    -  The Onion Services values required to connect to the *Application* and
       *Monitor Servers*.

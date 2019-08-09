@@ -30,22 +30,6 @@ administrator if you have trouble.
 .. _`Tails
    Upgrade Documentation`: https://tails.boum.org/doc/first_steps/upgrade/index.en.html
 
-
-Creating a GPG Key
-------------------
-We recommend creating a personal GPG key for encrypting files before moving
-them from the *Secure Viewing Station* to your everyday workstation. A GPG key
-has two parts: a *public key* and a *private key*. The private key, used for
-decryption, stays on your everyday workstation. The public key, used for
-encryption, is copied to the *Secure Viewing Station*.
-
-If you do not yet have a GPG key, follow the instructions for your
-operating system to set one up:
-
-- `Windows <https://ssd.eff.org/en/module/how-use-pgp-windows>`__
-- `Mac OS <https://ssd.eff.org/en/module/how-use-pgp-mac-os-x>`__
-- `GNU/Linux <https://ssd.eff.org/en/module/how-use-pgp-linux>`__
-
 Connecting to the *Journalist Interface*
 ----------------------------------------
 Journalists viewing documents on SecureDrop must connect to the
@@ -242,6 +226,15 @@ Once downloaded to either folder, move the document to the designated
 USB stick you intend to use to transfer the documents from your
 *Journalist Workstation* to the *Secure Viewing Station*. This storage
 device is known as your *Transfer Device*.
+
+.. note::
+
+   If the *Transfer Device* was set up according to our recommendations, you will
+   be prompted for a decryption passphrase on the *Journalist Workstation* and
+   the *Secure Viewing Station* before being able to use it in a given session.
+   We recommend storing this passphrase in your own personal password manager
+   (e.g., on your smartphone), so that it is readily accessible to you whenever
+   you need it.
 
 You can right-click the file and select **Copy to**, then select the *Transfer
 Device*, as shown in the screenshots below.
@@ -523,30 +516,8 @@ by default, which may reveal sensitive information about your SecureDrop
 usage patterns (potentially including GPS coordinates) to anyone who gains access
 to the file.
 
-Encrypting and Moving Documents to Your Everyday Workstation
-------------------------------------------------------------
-
-Before moving documents back to the *Transfer Device* to copy them to
-your everyday workstation, encrypt them to your personal GPG key that you
-imported when setting up the *Secure Viewing Station*.
-
-To do this, right-click on the document you want to encrypt and choose
-**Encrypt...**.
-
-|Encrypting 1|
-
-Then choose your public key (and, if you choose, any additional keys,
-such as an editor's) and click **OK**.
-
-|Encrypting 2|
-
-When you are done encrypting, you will have another document with the
-same filename but ending in ``.pgp`` (not ``.gpg``; the ``.pgp`` extension is
-just another way to refer to the same format). This file is encrypted to the GPG
-keys you selected. You can now copy these encrypted files to the *Transfer
-Device* to transfer them to your everyday workstation.
-
-|Encrypted document|
+Moving Documents to Your Everyday Workstation
+---------------------------------------------
 
 .. important::
 
@@ -556,11 +527,71 @@ Device* to transfer them to your everyday workstation.
    the risk of spreading malware to that computer. Make sure you understand the
    risks, and consider other methods to export the document (e.g., print).
 
+If you want to copy files from your *Secure Viewing Station* to your everyday
+workstation, our :doc:`recommendation <set_up_transfer_and_export_device>` is
+that journalists are provided with an *Export Device*, typically a USB drive,
+which is encrypted using `VeraCrypt <https://www.veracrypt.fr/en/Home.html>`__.
+These instructions assume that you are following the recommended workflow.
+If you are unsure, ask your administrator.
+
+To open the *Export Device* on the *Secure Viewing Station*, follow these steps:
+
+1. If your *Export Device* has a physical write protection switch, make sure
+   it is in the *unlocked* position.
+2. Plug the *Export Device* into the *Secure Viewing Station*.
+3. Click **Applications ▶ Utilities ▶ Unlock VeraCrypt Volumes**
+4. Under "Partitions and Drives", select the *Export Device* and click
+   **Unlock**.
+5. Enter your passphrase, which we recommend keeping in your own personal
+   password manager (e.g., on your smartphone), not on KeePassX.
+6. Under "Partitions and Drives", open the encrypted drive by clicking
+   **Open**.
+
+Steps 3-6 are illustrated below:
+
+|Unlock VeraCrypt in Tails 1|
+
+|Unlock VeraCrypt in Tails 2|
+
+|Unlock VeraCrypt in Tails 3|
+
+|Unlock VeraCrypt in Tails 4|
+
+The *Export Device* should now open in the file manager. If there are still
+files on the *Export Device* from your last copy operation,
+`securely delete <https://tails.boum.org/doc/encryption_and_privacy/secure_deletion/index.en.html#index3h1>`__
+them now.
+
+Copy the file or files you want to access on your everyday workstation to the
+*Export Device* using the file manager.
+
+.. note:
+
 Decrypting and Preparing to Publish
 -----------------------------------
 
-Plug the *Transfer Device* into your everyday workstation computer and copy
-over the encrypted documents. Decrypt them with GPG.
+To access the *Export Device* on your everyday workstation, follow these steps:
+
+1. If your *Export Device* has a physical write protection switch, make sure it
+   is in the *locked* position.
+2. Plug the *Export Device* into your everyday workstation.
+3. Launch the VeraCrypt application.
+4. Click **Select Device** and select the *Export Device*, then click **OK**.
+5. Click **Mount**.
+6. Enter the passphrase for your *Export Device*. You should find this in your
+   own personal password manager.
+7. Open the *Export Device* in your operating system's file manager, and copy
+   the contents of interest to your everyday workstation.
+
+For more information about working with VeraCrypt, see the
+`Freedom of the Press Foundation guide <https://freedom.press/training/encryption-toolkit-media-makers-veracrypt-guide/>`__.
+
+As a security precaution, we recommend deleting the files on the *Export Device*
+after each copy operation. If you are using write protection, you have to perform
+this step on the *Secure Viewing Station* to get the security benefits of write
+protection.
+
+When you are done, switch back to the VeraCrypt window, and click **Dismount**.
 
 You are now ready to write articles and blog posts, edit video and
 audio, and begin publishing important, high-impact work!
@@ -586,7 +617,8 @@ audio, and begin publishing important, high-impact work!
 .. |Flag for reply button| image:: images/manual/screenshots/journalist-col_has_no_key.png
 .. |Flag for reply notification| image:: images/manual/screenshots/journalist-col_flagged.png
 .. |Wiping documents| image:: images/manual/viewing5.png
-.. |Encrypting 1| image:: images/manual/viewing6.png
-.. |Encrypting 2| image:: images/manual/viewing7.png
-.. |Encrypted document| image:: images/manual/viewing8.png
 .. |Journalist account profile| image:: images/manual/screenshots/journalist-edit_account_user.png
+.. |Unlock VeraCrypt in Tails 1| image:: images/manual/unlock-veracrypt-in-tails-1.png
+.. |Unlock VeraCrypt in Tails 2| image:: images/manual/unlock-veracrypt-in-tails-2.png
+.. |Unlock VeraCrypt in Tails 3| image:: images/manual/unlock-veracrypt-in-tails-3.png
+.. |Unlock VeraCrypt in Tails 4| image:: images/manual/unlock-veracrypt-in-tails-4.png
