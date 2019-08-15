@@ -159,9 +159,9 @@ and in the :doc:`setup guide <set_up_transfer_and_export_device>`.
 
 Export Device
 -------------
-The *Export Device* is the physical media (e.g., CD-Rs) used to transfer
-decrypted documents from the *Secure Viewing Station* to a journalist's everyday
-workstation, or to another computer for additional processing.
+The *Export Device* is the physical media (e.g., designated USB drive) used to
+transfer decrypted documents from the *Secure Viewing Station* to a journalist's
+everyday workstation, or to another computer for additional processing.
 
 Please see the detailed security recommendations for the choice, configuration
 and use of your *Export Device* in the :doc:`journalist guide <journalist>`
