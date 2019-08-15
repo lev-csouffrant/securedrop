@@ -449,8 +449,8 @@ and flac. You can open MAT by clicking **Applications** ▸ **System Tools** ▸
 **MAT**.
 
 We recommend always doing as much work as possible inside of Tails
-before copying documents back to your *Journalist Workstation*. This
-includes stripping metadata with MAT.
+before working with documents on your everyday workstation. This includes
+stripping metadata with MAT.
 
 .. warning:: MAT is no longer actively maintained and **will not**
              strip all metadata, even when the output claims the
@@ -469,42 +469,54 @@ choose **Wipe** to delete them.
 Risks From Malware
 ~~~~~~~~~~~~~~~~~~
 
-As long as you are using the latest version of Tails, you should be
-able to open submitted documents with a low risk of malicious
-files compromising the *Secure Viewing Station*. However, even if a
-compromise does occur, Tails is designed so that the next time you
-reboot, the malware will be gone.
+As long as you are using the latest version of Tails on your *Secure Viewing Station*,
+you can open submitted documents with a low risk of malicious files compromising
+it. Tails only preserves changes to your persistent volume across reboots,
+making it difficult for malware to take hold. The air-gap prevents malware
+from "phoning home". Keeping your *Secure Viewing Station* up-to-date is the
+single best way to protect its security.
 
-It is crucial, however, that you have a strategy for dealing with malware before
-you move documents off the *Secure Viewing Station* in electronic form.
-SecureDrop does not scan for or automatically remove malware. If you copy an
-original file you received via SecureDrop to your everyday workstation, and that
-file contains malware, you may still end up running the malware on your everyday
-workstation.
+If you copy files you have received via SecureDrop to your everyday workstation
+and open them there in their original form, the risks from malware are
+significantly greater. SecureDrop does not scan for or remove malware, and your
+everyday workstation likely has a much greater `attack surface <https://en.wikipedia.org/wiki/Attack_surface>`__
+than the *Secure Viewing Station*.
 
-For this reason, we recommend taking additional precautions. Printing a file
-is often safer than exchanging it electronically, and it has the additional
-benefits of removing embedded metadata (except for printer codes, watermarks,
-or similar identifiers that may not be visible to the naked eye).
+Instead of exporting files in digital form, print them whenever possible. Printing
+essentially neutralizes malware, and it has the additional benefit of removing
+embedded metadata. Printing a document may, however, preserve watermarks,
+printer codes, steganographically encoded data, or other information
+not visible to the naked eye.
 
-Alternatively, you can use the tools provided within Tails to examine
-documents, or convert files from one format to another (e.g., export a Word
-document as PDF). Fully mitigating the risks of malware is beyond the scope
-of this documentation.
+If you must copy files in digital form (e.g., because of the quantity of
+information or the format), we recommend consulting with your administrator or
+your digital security staff before the export. Fully mitigating the risks of
+malware is beyond the scope of this documentation.
+
+.. tip::
+
+  Tails provides both graphical and command-line utilities that can be used to
+  convert files across formats (e.g., PDF to PNG). This can be a good way to
+  dramatically reduce the risk of malware, especially when converting to the
+  simplest possible format that can hold the information you need.
+
+Risks From QR Codes and Links
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 `Never scan QR codes`_ from the *Secure Viewing Station* using a network
-connected device. These QR codes can contain links that your connected device
+connected device. QR codes can contain links that your connected device
 will automatically visit. In general, you should take care when opening any
 links provided in a SecureDrop submission, as this can leak information to third
 parties. If you are unsure if a link is safe to click, you should consult your
 digital security staff or Freedom of the Press Foundation for assistance.
 
+
 .. _`Never scan QR codes`: https://securedrop.org/news/security-advisory-do-not-scan-qr-codes-submitted-through-securedrop-connected-devices
 .. _`working with sensitive documents`: https://tails.boum.org/doc/sensitive_documents/index.en.html
 .. _`Metadata Anonymisation Toolkit`: https://mat.boum.org/
 
-Risks From Photography
-~~~~~~~~~~~~~~~~~~~~~~
+Risks From Digital Photography
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 It may be tempting to use your smartphone to photograph a submission, in order
 to share it with another journalist for quick review. Please note that many
@@ -527,12 +539,18 @@ Moving Documents to Your Everyday Workstation
    the risk of spreading malware to that computer. Make sure you understand the
    risks, and consider other methods to export the document (e.g., print).
 
-If you want to copy files from your *Secure Viewing Station* to your everyday
-workstation, our :doc:`recommendation <set_up_transfer_and_export_device>` is
-that journalists are provided with an *Export Device*, typically a USB drive,
+If you must copy a file from your *Secure Viewing Station* to your everyday
+workstation in digital form, our :doc:`recommendation <set_up_transfer_and_export_device>`
+is that journalists are provided with an *Export Device*, typically a USB drive,
 which is encrypted using `VeraCrypt <https://www.veracrypt.fr/en/Home.html>`__.
 These instructions assume that you are following the recommended workflow.
 If you are unsure, ask your administrator.
+
+.. note::
+
+   VeraCrypt support was added to Tails in `version 3.9 <https://tails.boum.org/news/version_3.9/index.en.html>`__.
+   We strongly recommend keeping your *Secure Viewing Station* up-to-date with
+   each release of Tails.
 
 To open the *Export Device* on the *Secure Viewing Station*, follow these steps:
 
