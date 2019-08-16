@@ -180,34 +180,69 @@ authenticator. We currently support two options for two-factor authentication:
 
 Transfer Device(s) and Export Device(s)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-You need away to transfer encrypted submissions from the *Journalist
-Workstation* to the *Secure Viewing Station* to decrypt and view them, and a
-way to copy them from the *Secure Viewing Station* to the journalist's
-everyday workstation in decrypted form.
+You need a method to transfer encrypted submissions from the *Journalist
+Workstation* to the *Secure Viewing Station* to decrypt and view them
+(*Transfer Device*), and a method to copy them from the *Secure Viewing Station*
+to the journalist's everyday workstation in decrypted form (*Export Device*).
 
-We recommend using separate USB drives, in combination with encryption and
-careful data hygiene. We also urge you to consider using a printer or similar
-analog conversions to export documents from the *Secure Viewing Station*,
-whenever possible.
+Our standard recommendation is to use USB drives, in combination with
+volume-level encryption and careful data hygiene. Our documentation, including
+the :doc:`journalist guide <journalist>`, is based on this approach. We also
+urge you to consider using a printer or similar analog conversions to
+export documents from the *Secure Viewing Station*, whenever possible.
 
-You may want to employ write protection to make it impossible for malware to
-spread from the journalist's everyday workstation to the *Secure Viewing
-Station*. Consider USB media with a physical write protection switch, or a
-separate USB write blocker as used in forensic applications.
+You may want to consider enforcing write protection on USB drives when only read
+access is needed, or you may want to implement a workflow based on CD-Rs or
+DVD-Rs instead. We encourage you to evaluate these options in the context of
+your own threat model.
 
-If you want to use DVD/CD-Rs, we recommend purchasing separate drives for each
-computer that will write to or read from the media, to minimize the risks from
-malware compromising any one drive's firmware.
+Please find some notes regarding each of these methods below, and see our
+recommendations in the :doc:`setup guide <set_up_transfer_and_export_device>`
+for additional background.
+
+USB drives
+~~~~~~~~~~
+We recommend using one or multiple designated USB drives as the *Transfer
+Device(s)*, and one or multiple designated USB drives as the *Export
+Device(s)*. Whether one or multiple drives are appropriate depends on the number
+of journalists accessing the system, and on whether the team is distributed
+or not.
+
+Our documentation explains how the *Transfer Device* can be encrypted using
+LUKS, and how the *Export Device* can be encrypted using VeraCrypt (which works
+across platforms). We have not evaluated hardware-based encryption options; if
+you do select a hardware solution, make sure that both devices work in Tails,
+and that the *Export Device* also works on the operating system(s) used by
+journalists accessing the *Secure Viewing Station*.
+
+USB drives with write protection
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+When it is consistently applied and correctly implemented in hardware, write
+protection can prevent the spread of malware to your *Secure Viewing Station*
+from the computers used to read files stored on a *Transfer Device* or an
+*Export Device*.
+
+The two main options to achieve write protection of USB drives are:
+
+- drives with a built-in physical write protection switch
+- a separate USB write blocker device as used in forensic applications.
+
+DVD-Rs or CD-Rs
+~~~~~~~~~~~~~~~
+Single-use, write-once media can be used to realize a transfer and export
+workflow that is always one-directional: files are transferred to the *Secure
+Viewing Station* and the media used to do so are destroyed; files are exported
+from the *Secure Viewing Station* and the media used to do so are destroyed.
+
+If you want to realize such a workflow, we recommend purchasing separate drives
+for each computer that will write to or read from the media, to minimize the
+risks from malware compromising any one drive's firmware.
 
 You will also need a stack of blank DVD/CD-Rs, which you can buy anywhere, and a
 method to securely destroy media after use. Depending on your threat model, this
 can be very expensive; a cheap shredder can be purchased for less than $50,
 while shredders designed for use in Sensitive Compartmented Information
 Facilities (SCIFs) sell for as much as $3,000.
-
-Please see our recommendations in the :doc:`setup guide <set_up_transfer_and_export_device>`
-for additional background, and for alternatives you may want to consider, such as
-single-use, write-once media like CD-Rs or DVD-Rs.
 
 Monitor, Keyboard, Mouse
 ^^^^^^^^^^^^^^^^^^^^^^^^
