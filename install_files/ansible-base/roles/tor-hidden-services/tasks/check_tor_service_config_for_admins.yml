@@ -11,11 +11,11 @@
   register: _v3_services_existence_check_result
   with_items: "{{ tor_instances_v3 }}"
 
-  # Returns a list of booleans; should be ["True"] if v3 is enabled in sdconfig,
-  # otherwise ["False"]
+  # Returns a list of booleans, one boolean for each v3 service, denoting whether
+  # a config currently exists for that service.
 - name: Store info about existing v3 service state
   set_fact:
-    _v3_services_state_info: "{{ _v3_services_state_info|extract('exists')|unique }}"
+    _v3_services_state_info: "{{ _v3_services_existence_check_result.results|map(attribute='stat')|map(attribute='exists')|list }}"
 
 - name: Debug the v3 service state lookup
   debug:
@@ -27,11 +27,12 @@
 - name: Confirm service state matches declared config
   assert:
     that: >
-      (True in _v3_services_state_info and v3_onion_services) or
-      (True not in _v3_services_state_info and not v3_onion_services)
-    fail_msg: >
+      (true in _v3_services_state_info and v3_onion_services) or
+      (true not in _v3_services_state_info and not v3_onion_services)
+    msg: >
       ERROR. The 'sdconfig' settings do not specify v3 Onion Services,
       but v3 Onion Services were found on the server. If your SecureDrop
       instance has multiple Administrators, contact the other Administrators
       to request the Tor v3 Onion Service config information. You must copy
-      the '*ths' files to this workstation, then re-run the install action.
+      the 'tor_v3_keys.json' and '*.auth_private' files to this workstation,
+      then re-run the install action.
