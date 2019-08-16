@@ -33,4 +33,4 @@
       the 'tor_v3_keys.json' and '*.auth_private' files to this workstation,
       then re-run the install action.
   # In staging, Monitor Server will have 0 (SSH-over-Tor disabled)
-  when: v3_onion_services|length > 0
+  when: tor_instances_v3|length > 0
