@@ -564,7 +564,7 @@ on Tails, and it works well with and without encryption.
 
 If you want to use a setup based on CD-Rs or DVD-Rs, we've found the CDR/DVD
 writers from Samsung and LG to work reasonably well; you can find some examples
-`here <http://www.newegg.com/External-CD-DVD-Blu-Ray-Drives/SubCategory/ID-420>`__.
+`here <https://www.newegg.com/External-CD-DVD-Blu-Ray-Drives/SubCategory/ID-420>`__.
 
 Please see our recommendations in the :doc:`setup guide <set_up_transfer_and_export_device>`
 for additional background.
