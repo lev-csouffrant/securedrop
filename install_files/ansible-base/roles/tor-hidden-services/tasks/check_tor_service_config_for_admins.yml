@@ -32,5 +32,9 @@
       to request the Tor v3 Onion Service config information. You must copy
       the 'tor_v3_keys.json' and '*.auth_private' files to this workstation,
       then re-run the install action.
-  # In staging, Monitor Server will have 0 (SSH-over-Tor disabled)
-  when: tor_instances_v3|length > 0
+  when:
+    # In staging, Monitor Server will have 0 (SSH-over-Tor disabled)
+    - tor_instances_v3|length > 0
+    # Only run if we're connected over Tor (i.e. enabling v3 after v2).
+    # If we're not connected over Tor, this is a first-run.
+    - (ansible_host|default(ansible_ssh_host)).endswith('.onion')
