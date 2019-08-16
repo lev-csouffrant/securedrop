@@ -7,7 +7,7 @@
 
 - name: Check whether v3 services exist on server
   stat:
-    file: "{{ tor_hidden_services_parent_dir }}"
+    path: "{{ tor_hidden_services_parent_dir }}/{{ item.service }}"
   register: _v3_services_existence_check_result
   with_items: "{{ tor_instances_v3 }}"
 
