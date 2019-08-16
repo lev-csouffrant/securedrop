@@ -260,18 +260,26 @@ of it is still recommended.
 Offline Printer
 ^^^^^^^^^^^^^^^
 
-It is often useful to print submissions from the *Secure Viewing Station* for
-review and annotation. Printing eliminates :ref:`most of the risks associated with
-malware <malware_risks>`, aside from malicious QR codes that a journalist may be tempted to scan.
-It also removes invisible metadata that may identify the source of a given
-document (with the exception of `printer tracking information <https://www.eff.org/issues/printers>`__
-included in a scanned document, or similar forms of metadata that may not be
-easily visible or recognizable).
+We highly recommend purchasing a printer for your *Secure Viewing Station* and
+using it as the preferred method to make copies of documents received via
+SecureDrop.
 
-.. warning:: To maintain the integrity of the air-gap, this printer should be
-             dedicated to use with the *Secure Viewing Station*, connected via
-             a wired connection, and should not have any wireless communication
-             capabilities.
+By printing a submission, even a non-technical user can effectively mitigate
+many of the complex risks associated with malware or hidden metadata embedded in
+files received via SecureDrop. Your organization may also already have robust
+procedures in place for destroying sensitive printed documents.
+
+.. important:: To maintain the integrity of the air-gap, this printer should be
+               dedicated to use with the *Secure Viewing Station*, connected via
+               a wired connection, and should not have any wireless communication
+               capabilities.
+
+While printing is notable for what it strips away, it is also important to
+remember what it preserves: QR codes or links that journalists may scan or type
+in; `printer tracking information <https://www.eff.org/issues/printers>`__
+included in a scanned document; other visually encoded information. See the
+:ref:`malware_risks` section in the Journalist Guide for further guidance on
+this subject.
 
 Offline Storage
 ^^^^^^^^^^^^^^^
